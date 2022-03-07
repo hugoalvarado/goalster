@@ -16,10 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from goal.views import goals, add_todo
+from goal.views import goals, add_goal
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', goals, name='goals'),
-    path('add-todo/', add_todo, name='add_todo'),
+    path('add-goal/', add_goal, name='add_goal'),
 ]

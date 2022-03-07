@@ -5,13 +5,14 @@ from .models import Goal
 
 # Create your views here.
 def goals(request):
-    return render(request, 'goal/goals.html')
+    goals = Goal.objects.all()
+    return render(request, 'goal/goals.html', {'goals': goals})
 
 @require_http_methods(['POST'])
-def add_todo(request):
+def add_goal(request):
     title = request.POST.get('title')
 
     if title:
         goal = Goal.objects.create(title=title)
         return render(request, 'goal/partials/goal.html', {'goal': goal})
-    return render()
+    return render(request, 'error.html')
